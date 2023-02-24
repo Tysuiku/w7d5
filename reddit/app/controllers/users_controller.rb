@@ -1,13 +1,25 @@
 class UsersController < ApplicationController
-   
   def index
     @users = User.all
     render :index
   end
 
+  def show
+    @user = User.find(params[:id])
+
+    render :show
+  end
+
   def create
     @user = User.new(user_params)
-    redirect_to user_url
+    if @user.save
+      login(@user)
+      flash[:messages] = ["successfully created account and logged in"]
+      redirect_to user_url(@user.id)
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :new
+    end
   end
 
   def new
@@ -24,6 +36,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user)
     else
+      flash.now[:errors] = @user.errors.full_messages
       render :edit
     end
   end
@@ -35,8 +48,8 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :password)
   end
-
 end

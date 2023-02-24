@@ -1,0 +1,14 @@
+<h2> Edit User Page</h2>
+<div>
+<form action="<%= user_url %>" method="post">
+<input type="hidden" name="_method" value="patch">
+
+<label>username
+<input type="text" name="user[username]" value="">
+</label>
+
+<br/>
+
+<input type="submit" value="Update User">
+</form>
+</div>
