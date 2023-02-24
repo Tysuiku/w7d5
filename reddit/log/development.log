@@ -20,3 +20,49 @@ Migrating to CreateUsers (20230224153951)
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6223636644477694260)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-02-24 11:25:52 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/appacademy/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/appacademy/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.9ms | Allocations: 530)
+Completed 200 OK in 25ms (Views: 12.8ms | ActiveRecord: 0.0ms | Allocations: 2834)
+
+
+Started GET "/users" for ::1 at 2023-02-24 11:25:58 -0500
+
+NoMethodError - undefined method `helper_methods' for ApplicationController:Class
+  helper_methods :current_user, :logged_in?
+  ^^^^^^^^^^^^^^
+Did you mean?  helper_method
+               _helper_methods
+               _helper_methods?
+               _helper_methods=:
+  app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Started POST "/__better_errors/2a1e44f3360e912b/variables" for ::1 at 2023-02-24 11:25:58 -0500
+Started GET "/users" for ::1 at 2023-02-24 11:26:34 -0500
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms | Allocations: 5876)
+
+
+
+NoMethodError - undefined method `before_validations' for User:Class
+Did you mean?  before_validation:
+  app/models/user.rb:15:in `<class:User>'
+  app/models/user.rb:12:in `<top (required)>'
+  app/controllers/users_controller.rb:4:in `index'
+
+Started POST "/__better_errors/a3f419e22a0195c9/variables" for ::1 at 2023-02-24 11:26:34 -0500
+Started GET "/users" for ::1 at 2023-02-24 11:26:57 -0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 917)
+  Rendered layout layouts/application.html.erb (Duration: 51.3ms | Allocations: 7560)
+Completed 200 OK in 56ms (Views: 50.3ms | ActiveRecord: 3.5ms | Allocations: 9281)
+
+
